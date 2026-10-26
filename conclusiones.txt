@@ -1,0 +1,28 @@
+HALLAZGOS Y CONCLUSIONES
+
+Herramienta: Cypress se usó para E2E y APIs, así un solo repositorio, una sola instalación y un solo comando.
+
+E2E - SauceDemo
+- El flujo:
+1. login 
+2. 2 productos
+3. carrito
+4. formulario
+5. confirmación.
+- Se usaron selectores data-test, más estables que clases CSS o textos.
+- La confirmación se valida sin distinguir mayúsculas, porque la interfaz muestra el texto en mayúsculas pero el DOM lo entrega en formato normal.
+
+APIs - Petstore (usuario)
+- Se cubre el ciclo CRUD completo: 
+1. Crear
+2. Consultar
+3. Actualizar
+4. Consultar data actualizada
+5. Eliminar.
+- Cada paso valida código HTTP y cuerpo de la respuesta; al final se confirma que el usuario eliminado devuelve 404.
+- Petstore es un servicio público compartido: puede haber latencia o 404 transitorios tras crear un usuario. Se añadió un reintento en las consultas para evitar falsos negativos.
+- El POST devuelve el id en el campo "message" como texto, lo cual es un comportamiento poco convencional de la API.
+
+Mejoras futuras
+- Page Object Model si el flujo E2E crece.
+- Pruebas negativas (credenciales inválidas, campos vacíos).

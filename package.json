@@ -1,0 +1,14 @@
+{
+  "name": "qa-prueba-tecnica",
+  "version": "1.0.0",
+  "description": "E2E (SauceDemo) y API (Petstore) con Cypress",
+  "scripts": {
+    "test": "cypress run",
+    "test:e2e": "cypress run --spec cypress/e2e/saucedemo-checkout.cy.js",
+    "test:api": "cypress run --spec cypress/e2e/api-petstore-user.cy.js",
+    "open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}
